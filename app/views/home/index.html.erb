@@ -1,0 +1,67 @@
+<h1>Pull List</h1>
+
+<div class="column">
+  <% if List.last %>
+    <h2>Pull List for <%= List.last.date %></h2>
+
+    <h3>Purchase:</h3>
+    <% if comics_to_purchase.count > 0 %>
+      <ul>
+      <% comics_to_purchase.each do |comic| %>
+        <% if comic.obtained %>
+          <li><span class="gotten"><%= comic.title %></span> (<%= link_to 'Unmark', unmark_path(comic.id) %>)</li>
+        <% else %>
+          <li><%= comic.title %> (<%= link_to 'Mark', mark_path(comic.id) %>)</li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% end %>
+
+    <h3>Download:</h3>
+    <% if comics_to_download.count > 0 %>
+      <ul>
+      <% comics_to_download.each do |comic| %>
+        <% if comic.obtained %>
+          <li><span class="gotten"><%= comic.title %></span> (<%= link_to 'Unmark', unmark_path(comic.id) %>)</li>
+        <% else %>
+          <li><%= comic.title %> (<%= link_to 'Mark', mark_path(comic.id) %>)</li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% end %>
+    <h4><%= link_to "Reset", reset_path(List.last.id) %></h4>
+  <% else %>
+    <h2>You have not created a list yet</h2>
+  <% end %>
+</div>
+
+<div class="column">
+  <% if List.last && List.last.date == next_date %>
+    <h2>Full list for <%= next_date %></h2>
+    <% comic_list.each do |comic| %>
+      <p><%= comic %></p>
+    <% end %>
+  <% else %>
+    <h2>Create List for <%= next_date %></h2>
+
+    <%= form_tag "/create" do %>
+      <%= hidden_field_tag :date, next_date %>
+
+      <% comic_list.each do |comic| %>
+      <div class="comic">
+        <div class="title"><%= comic %></div>
+        <div class="select">
+          <%= radio_button_tag comic, 'purchase' %>
+          <%= label_tag "#{comic}_purchase", 'BUY' %>
+          <%= radio_button_tag comic, 'download' %>
+          <%= label_tag "#{comic}_download", 'DL' %>
+        </div>
+      </div>
+      <% end %>
+
+      <%= submit_tag 'Submit' %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="clear"></div>

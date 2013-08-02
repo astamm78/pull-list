@@ -1,0 +1,23 @@
+<h1>Your Pull List</h1>
+
+<% if List.last %>
+  <h2>Pull List for <%= List.last.date %></h2>
+
+  <h3>Purchase:</h3>
+  <% if comics_to_purchase.count > 0 %>
+    <ul>
+    <% comics_to_purchase.each do |comic| %>
+      <li><%= comic.title %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <h3>Download:</h3>
+  <% if comics_to_download.count > 0 %>
+    <ul>
+    <% comics_to_download.each do |comic| %>
+      <li><%= comic.title %></li>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>
