@@ -51,3 +51,17 @@ body {
 .gotten {
   text-decoration: line-through;
 }
+
+ul {
+  padding-left: 0px;
+}
+
+ul li {
+  list-style: none;
+  margin: 1em 0;
+}
+
+.small-bold {
+  font-size: .8em;
+  font-weight: bold;
+}

@@ -9,9 +9,9 @@
       <ul>
       <% comics_to_purchase.each do |comic| %>
         <% if comic.obtained %>
-          <li><span class="gotten"><%= comic.title %></span> (<%= link_to 'Unmark', unmark_path(comic.id) %>)</li>
+          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
         <% else %>
-          <li><%= comic.title %> (<%= link_to 'Mark', mark_path(comic.id) %>)</li>
+          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
         <% end %>
       <% end %>
       </ul>
@@ -22,9 +22,9 @@
       <ul>
       <% comics_to_download.each do |comic| %>
         <% if comic.obtained %>
-          <li><span class="gotten"><%= comic.title %></span> (<%= link_to 'Unmark', unmark_path(comic.id) %>)</li>
+          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
         <% else %>
-          <li><%= comic.title %> (<%= link_to 'Mark', mark_path(comic.id) %>)</li>
+          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
         <% end %>
       <% end %>
       </ul>
