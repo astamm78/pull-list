@@ -24,4 +24,5 @@ gem 'turbolinks'
 
 gem 'jbuilder', '~> 1.2'
 
+gem 'newrelic_rpm'
 gem 'figaro'
