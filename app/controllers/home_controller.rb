@@ -1,8 +1,15 @@
+require "#{Rails.root}/app/helpers/application_helper"
+include ApplicationHelper
+
 class HomeController < ApplicationController
 
   http_basic_authenticate_with :name => ENV['LOGIN'], :password => ENV['PASSWORD']
 
   def index
+    if time_to_send_reminder? && List.last.sent == false
+      send_reminder
+      List.last.update_attributes(sent: true)
+    end
     @list = List.new
   end
 
