@@ -20,17 +20,13 @@ module ApplicationHelper
 
   def leftovers_to_purchase
     _results = []
-    leftovers.each do |comic|
-      comic.purchase == true ? _results << comic : nil
-    end
+    leftovers.each { |comic| _results << comic if comic.purchase == true }
     _results
   end
 
   def leftovers_to_download
     _results = []
-    leftovers.each do |comic|
-      comic.purchase == true ? _results << comic : nil
-    end
+    leftovers.each { |comic| _results << comic if comic.download == true }
     _results
   end
 
