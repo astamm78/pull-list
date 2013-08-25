@@ -14,6 +14,26 @@ module ApplicationHelper
     @_array.uniq
   end
 
+  def leftovers
+    Comic.where(obtained: false) - List.last.comics
+  end
+
+  def leftovers_to_purchase
+    _results = []
+    leftovers.each do |comic|
+      comic.purchase == true ? _results << comic : nil
+    end
+    _results
+  end
+
+  def leftovers_to_download
+    _results = []
+    leftovers.each do |comic|
+      comic.purchase == true ? _results << comic : nil
+    end
+    _results
+  end
+
   def comics_to_purchase
     List.last.comics.where(purchase: true).order('id ASC')
   end

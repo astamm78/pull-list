@@ -33,6 +33,35 @@
   <% else %>
     <h2>You have not created a list yet</h2>
   <% end %>
+
+  <% if leftovers.count > 0 %>
+    <h2>Left from previous weeks:</h2>
+    <% if leftovers_to_purchase.count > 0 %>
+      <h3>Purchase:</h3>
+      <ul>
+      <% leftovers_to_purchase.each do |comic| %>
+        <% if comic.obtained %>
+          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
+        <% else %>
+          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% end %>
+
+    <% if leftovers_to_download.count > 0 %>
+      <h3>Download:</h3>
+      <ul>
+      <% leftovers_to_download.each do |comic| %>
+        <% if comic.obtained %>
+          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
+        <% else %>
+          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
+        <% end %>
+      <% end %>
+      </ul>
+    <% end %>
+  <% end %>
 </div>
 
 <div class="column">
