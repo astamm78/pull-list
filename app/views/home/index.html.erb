@@ -7,26 +7,18 @@
     <h3>Purchase:</h3>
     <% if comics_to_purchase.count > 0 %>
       <ul>
-      <% comics_to_purchase.each do |comic| %>
-        <% if comic.obtained %>
-          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
-        <% else %>
-          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
+        <% comics_to_purchase.each do |comic| %>
+          <%= render 'comic_display', comic: comic %>
         <% end %>
-      <% end %>
       </ul>
     <% end %>
 
     <h3>Download:</h3>
     <% if comics_to_download.count > 0 %>
       <ul>
-      <% comics_to_download.each do |comic| %>
-        <% if comic.obtained %>
-          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
-        <% else %>
-          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
+        <% comics_to_download.each do |comic| %>
+          <%= render 'comic_display', comic: comic %>
         <% end %>
-      <% end %>
       </ul>
     <% end %>
     <h4><%= link_to "Reset", reset_path(List.last.id) %></h4>
@@ -39,26 +31,18 @@
     <% if leftovers_to_purchase.count > 0 %>
       <h3>Purchase:</h3>
       <ul>
-      <% leftovers_to_purchase.each do |comic| %>
-        <% if comic.obtained %>
-          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
-        <% else %>
-          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
+        <% leftovers_to_purchase.each do |comic| %>
+          <%= render 'comic_display', comic: comic %>
         <% end %>
-      <% end %>
       </ul>
     <% end %>
 
     <% if leftovers_to_download.count > 0 %>
       <h3>Download:</h3>
       <ul>
-      <% leftovers_to_download.each do |comic| %>
-        <% if comic.obtained %>
-          <li><span class="gotten"><%= comic.title %></span> <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span></li>
-        <% else %>
-          <li><%= comic.title %> <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span></li>
+        <% leftovers_to_download.each do |comic| %>
+          <%= render 'comic_display', comic: comic %>
         <% end %>
-      <% end %>
       </ul>
     <% end %>
   <% end %>

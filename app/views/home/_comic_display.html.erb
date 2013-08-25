@@ -1,0 +1,10 @@
+<% if comic.obtained %>
+  <li>
+    <span class="gotten"><%= comic.title %></span>
+    <span class="small-bold">(<%= link_to 'Unmark', unmark_path(comic.id) %>)</span>
+  </li>
+<% else %>
+  <li><%= comic.title %>
+    <span class="small-bold">(<%= link_to 'Mark', mark_path(comic.id) %>)</span>
+  </li>
+<% end %>
