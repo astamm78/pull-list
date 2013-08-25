@@ -65,3 +65,8 @@ ul li {
   font-size: .8em;
   font-weight: bold;
 }
+
+.uppy {
+  position: relative;
+  bottom: 10px;
+}

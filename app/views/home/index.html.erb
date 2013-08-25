@@ -33,6 +33,7 @@
       <ul>
         <% leftovers_to_purchase.each do |comic| %>
           <%= render 'comic_display', comic: comic %>
+          <span class="small-bold uppy">From: <%= comic.list.date %></span>
         <% end %>
       </ul>
     <% end %>
@@ -42,6 +43,7 @@
       <ul>
         <% leftovers_to_download.each do |comic| %>
           <%= render 'comic_display', comic: comic %>
+          <span class="small-bold uppy">From: <%= comic.list.date %></span>
         <% end %>
       </ul>
     <% end %>
