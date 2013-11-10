@@ -6,14 +6,14 @@ module ApplicationHelper
 
   def previous_months_comics
     results = []
-    previous_month.each do |list|
+    previous_months.each do |list|
       results << list.comics
     end
     results.flatten
   end
 
   def previous_months_comics_sorted
-    previous_month_comics.sort { |a, b| a.title <=> b.title }
+    previous_months_comics.sort { |a, b| a.title <=> b.title }
   end
 
   def next_date
