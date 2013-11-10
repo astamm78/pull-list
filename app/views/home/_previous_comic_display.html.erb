@@ -1,1 +1,7 @@
-<li><%= comic.title %></li>
+<li>
+  <%= comic.title %>
+  <br>
+  <span class="small-bold">
+    <%= comic.purchase ? "Store Purchase" : "Download" %>
+  </span>
+</li>
