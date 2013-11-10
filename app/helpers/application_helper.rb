@@ -1,5 +1,21 @@
 module ApplicationHelper
 
+  def previous_months
+    List.find(:all, order: "id DESC", limit: 8)
+  end
+
+  def previous_months_comics
+    results = []
+    previous_month.each do |list|
+      results << list.comics
+    end
+    results.flatten
+  end
+
+  def previous_months_comics_sorted
+    previous_month_comics.sort { |a, b| a.title <=> b.title }
+  end
+
   def next_date
     doc = Nokogiri::HTML(open('http://www.grahamcrackers.com/newcomics.htm'))
     doc.search('td.header div').last.inner_text.gsub(/\n?/, "").gsub(/\t?/, "")
