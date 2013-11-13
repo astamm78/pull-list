@@ -49,7 +49,7 @@ class HomeController < ApplicationController
 
   def unfollow
     destroy_followed_title(params[:title])
-    redirect_to root_path
+    render :nothing => true
   end
 
   private

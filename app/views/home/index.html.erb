@@ -48,14 +48,6 @@
       </ul>
     <% end %>
   <% end %>
-
-  <h2>Comics from the last 4 lists:</h2>
-    <ul>
-      <% previous_months_comics_sorted.each do |comic| %>
-        <%= render 'previous_comic_display', comic: comic %>
-        <span class="small-bold uppy">From: <%= comic.list.date %></span>
-      <% end %>
-    </ul>
 </div>
 
 <div class="column">
@@ -83,7 +75,7 @@
           <br>
           <span class="small-bold">
             Last issue: <%= last_followed_issue(comic).title %>
-            <%= link_to 'Unfollow', unfollow_path(strip_issue_info(comic)) %>
+            <%= link_to 'Unfollow', unfollow_path(strip_issue_info(comic)), class: 'unfollow_link' %>
           </span>
         <% end %>
       </div>
