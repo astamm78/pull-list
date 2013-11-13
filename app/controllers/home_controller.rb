@@ -47,4 +47,16 @@ class HomeController < ApplicationController
     redirect_to root_path
   end
 
+  def unfollow
+    destroy_followed_title(params[:title])
+    redirect_to root_path
+  end
+
+  private
+    def destroy_followed_title(title)
+      matching_followed_comics(title).each do |comic|
+        comic.destroy
+      end
+    end
+
 end

@@ -81,7 +81,10 @@
         </div>
         <% if title_followed?(strip_issue_info(comic)) %>
           <br>
-          <span class="small-bold">Last issue: <%= last_followed_issue(comic).title %></span>
+          <span class="small-bold">
+            Last issue: <%= last_followed_issue(comic).title %>
+            <%= link_to 'Unfollow', unfollow_path(strip_issue_info(comic)) %>
+          </span>
         <% end %>
       </div>
       <% end %>
