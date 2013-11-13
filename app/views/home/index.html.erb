@@ -49,7 +49,7 @@
     <% end %>
   <% end %>
 
-  <h2>Comics from the last 8 weeks:</h2>
+  <h2>Comics from the last 4 lists:</h2>
     <ul>
       <% previous_months_comics_sorted.each do |comic| %>
         <%= render 'previous_comic_display', comic: comic %>
@@ -71,7 +71,7 @@
       <%= hidden_field_tag :date, next_date %>
 
       <% comic_list.each do |comic| %>
-      <div class="comic">
+      <div class="comic <%= 'followed' if title_followed?(comic) %>">
         <div class="title"><%= comic %></div>
         <div class="select">
           <%= radio_button_tag comic, 'purchase' %>
@@ -79,6 +79,10 @@
           <%= radio_button_tag comic, 'download' %>
           <%= label_tag "#{comic}_download", 'DL' %>
         </div>
+        <% if title_followed?(strip_issue_info(comic)) %>
+          <br>
+          <span class="small-bold">Last issue: <%= last_followed_issue(comic).title %></span>
+        <% end %>
       </div>
       <% end %>
 

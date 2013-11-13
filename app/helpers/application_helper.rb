@@ -1,7 +1,24 @@
 module ApplicationHelper
 
+  def matching_followed_comics(full_title_name)
+    title = strip_issue_info(full_title_name)
+    Comic.all.select { |comic| comic.title_name == title }
+  end
+
+  def title_followed?(full_title_name)
+    matching_followed_comics(full_title_name).count > 0
+  end
+
+  def last_followed_issue(full_title_name)
+    matching_followed_comics(full_title_name).last
+  end
+
+  def strip_issue_info(full_title_name)
+    full_title_name.gsub(/(\s#.*)/, '')
+  end
+
   def previous_months
-    List.find(:all, order: "id DESC", limit: 8)
+    List.find(:all, order: "id DESC", limit: 4)
   end
 
   def previous_months_comics

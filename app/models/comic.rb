@@ -4,4 +4,8 @@ class Comic < ActiveRecord::Base
 
   belongs_to :list
 
+  def title_name
+    strip_issue_info(title)
+  end
+
 end

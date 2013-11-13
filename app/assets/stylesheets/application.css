@@ -44,6 +44,10 @@ body {
   padding: 2%;
 }
 
+.comic.followed {
+  background: red;
+}
+
 .comic:hover {
   background: gray;
 }
